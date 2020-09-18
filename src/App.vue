@@ -7,7 +7,6 @@
 
 <script>
 import MainTabBar from "components/content/mainTabBar/MainTabBar";
-import {request} from "network/home/request";
 
 export default {
   name: 'App',
@@ -15,12 +14,6 @@ export default {
     MainTabBar
   }
 }
-
-const axiosInstance = request({
-  url: "home/multidata"
-}).then(res => {
-  console.log(res);
-})
 </script>
 
 <style>
