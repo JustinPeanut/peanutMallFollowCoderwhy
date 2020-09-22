@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 import Vue from 'vue';
-const Home = () => import("views/Home");
+const Home = () => import("views/Home/Home");
 const Category = () => import("views/Category");
 const Profile = () => import("views/Profile");
 const ShopCart = () => import("views/ShopCart");

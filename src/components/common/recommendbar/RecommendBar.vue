@@ -16,6 +16,8 @@
     display: flex;
     text-align: center;
     font-size: 13px;
+    margin: 10px 0px;
+    border-bottom: 5px solid #f4f4f4;
   }
 
 </style>

@@ -4,7 +4,7 @@ import Axios from "axios";
 export function request(config){
   // 创建axios实例，设置baseConfig
   const axiosInstance = Axios.create({
-    baseURL: "http://123.207.32.32:8000",
+    baseURL: "http://localhost:3000",
     timeout: 5000
   });
   // 请求拦截器
