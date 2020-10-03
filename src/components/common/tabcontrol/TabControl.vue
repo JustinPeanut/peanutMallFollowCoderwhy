@@ -28,6 +28,8 @@
       },
       setActive(index){
         this.currentIndex = index;
+        // 传回父组件，监听当前index的点击，对应修改展示的商品信息
+        this.$emit('tabClick',index);
       }
     }
   }
@@ -37,8 +39,8 @@
   .tabControl-box{
     display: flex;
     text-align: center;
-    height: 20px;
-    line-height: 20px;
+    height: 40px;
+    line-height: 40px;
     background-color: #ffffff;
   }
   .title-list{

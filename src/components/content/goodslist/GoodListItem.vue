@@ -6,8 +6,6 @@
       <span class="price">{{goodsItem.price}}</span>
       <span class="collect">{{goodsItem.cfav}}</span>
     </div>
-
-
   </div>
 </template>
 
