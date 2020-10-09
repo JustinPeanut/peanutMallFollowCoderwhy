@@ -4,7 +4,7 @@
     <nav-bar class="nav-bar">
       <div slot="center">购物街</div>
     </nav-bar>
-    <scroll class="content" ref="scroll" @scrolling="scroll" :probe-type="3">
+    <scroll class="content" ref="scroll" @scrolling="scroll" :probe-type="3" @pullingUp="pullingUp" :pull-up-load="true">
       <div class="main-swiper">
         <main-swiper  :swiper="swiper"></main-swiper>
       </div>
@@ -68,6 +68,9 @@
       this.getHomeGoods('pop');
       this.getHomeGoods('new');
       this.getHomeGoods('sell');
+      this.$bus.$on("loadImgItem",() =>{
+        this.$refs.scroll.refresh();
+      })
     },
     methods: {
       /**
@@ -102,6 +105,10 @@
           case 1: this.goodType = "new"; break;
           case 2: this.goodType = "sell"; break;
         }
+      },
+      pullingUp(){
+        this.getHomeGoods(this.goodType);
+        this.$refs.scroll.finishPullUp();
       }
     }
   }

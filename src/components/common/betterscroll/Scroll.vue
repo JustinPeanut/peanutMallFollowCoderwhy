@@ -16,6 +16,12 @@
         default(){
           return 0
         }
+      },
+      pullUpLoad: {
+        type: Boolean,
+        default(){
+          return false;
+        }
       }
     },
     data(){
@@ -26,15 +32,25 @@
     mounted() {
       this.bs = new BScroll(this.$refs.wrapper,{
         click: true,
-        probeType: this.probeType
+        probeType: this.probeType,
+        pullUpLoad: this.pullUpLoad
       });
       this.bs.on('scroll',(position) => {
         this.$emit("scrolling",position);
+      });
+      this.bs.on('pullingUp',()=>{
+        this.$emit("pullingUp")
       });
     },
     methods:{
       scrollTo(x,y,time=300){
         this.bs.scrollTo(x,y,time);
+      },
+      refresh(){
+        this.bs.refresh();
+      },
+      finishPullUp(){
+        this.bs.finishPullUp();
       }
     }
   }
