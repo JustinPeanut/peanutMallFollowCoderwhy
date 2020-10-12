@@ -82,6 +82,7 @@
         })
     },
     activated() {
+      this.$refs.scroll && this.$refs.scroll.refresh()
       this.$refs.scroll.scrollTo(0,this.homeScrollY,0)
       this.$refs.scroll && this.$refs.scroll.refresh()
     },
