@@ -43,14 +43,15 @@
       });
     },
     methods:{
+
       scrollTo(x,y,time=300){
-        this.bs.scrollTo(x,y,time);
+        this.bs && this.bs.scrollTo(x,y,time);
       },
       refresh(){
-        this.bs.refresh();
+        this.bs && this.bs.refresh();
       },
       finishPullUp(){
-        this.bs.finishPullUp();
+        this.bs && this.bs.finishPullUp();
       }
     }
   }
