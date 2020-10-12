@@ -56,7 +56,8 @@
         goodType: "pop",
         isShow: false,
         tabOffsetTop: 0,
-        isFixed: false
+        isFixed: false,
+        homeScrollY: 0
       }
     },
     computed: {
@@ -74,14 +75,18 @@
 
     },
     mounted() {
-      if(this.$refs.scroll != undefined){
         // let refresh = this.debounce(this.$refs.scroll.refresh(),500)
         this.$bus.$on("loadImgItem",() =>{
           // refresh();
-          this.$refs.scroll.refresh()
+          this.$refs.scroll && this.$refs.scroll.refresh()
         })
-      }
-
+    },
+    activated() {
+      this.$refs.scroll.scrollTo(0,this.homeScrollY,0)
+      this.$refs.scroll && this.$refs.scroll.refresh()
+    },
+    deactivated() {
+      this.homeScrollY = this.$refs.scroll.getScrollY()
     },
     methods: {
       /**

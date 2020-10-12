@@ -52,6 +52,9 @@
       },
       finishPullUp(){
         this.bs && this.bs.finishPullUp();
+      },
+      getScrollY(){
+        return this.bs.y
       }
     }
   }
