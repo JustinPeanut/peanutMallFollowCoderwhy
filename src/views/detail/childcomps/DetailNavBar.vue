@@ -23,7 +23,7 @@
     },
     data(){
       return{
-        detailTitle:['商品','参数','评论','推荐'],
+        detailTitle:['商品','参数'],
         currentIndex: 0
       }
     },
@@ -33,6 +33,8 @@
     methods:{
       titleClick(index){
         this.currentIndex = index
+        // 向父组件发送标题点击，使之跳转到指定位置
+        this.$emit('titleClick',index)
       },
       back(){
         this.$router.go(-1)
