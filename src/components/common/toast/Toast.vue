@@ -7,18 +7,20 @@
 <script>
   export default {
     name: "Toast",
-    props:{
-      message: {
-        type: String,
-        default(){
-          return "默认字符串"
-        }
-      },
-      isShow:{
-        type: Boolean,
-        default() {
-          return false
-        }
+    data(){
+      return {
+        message: "",
+        isShow: false
+      }
+    },
+    methods:{
+      show(message,duration=1500){
+        this.message = message
+        this.isShow = true
+        setTimeout(()=>{
+          this.message = ""
+          this.isShow = false
+        },duration)
       }
     }
   }
@@ -33,5 +35,6 @@
     padding: 10px;
     transform: translate(-50%,-50%);
     color: #eee;
+    z-index: 999;
   }
 </style>

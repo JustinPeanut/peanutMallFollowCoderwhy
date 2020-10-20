@@ -10,7 +10,6 @@
   </scroll>
   <back-top @click.native="backTop" v-show="isShow"/>
   <detail-bottom-bar @addEvent="addCartList"/>
-  <toast :message="message" :isShow="isShow"/>
 </div>
 </template>
 
@@ -41,7 +40,6 @@
       Scroll,
       DetailGoodsInfo,
       DetailBottomBar,
-      Toast
     },
     data(){
       return {
@@ -53,8 +51,6 @@
         detailInfo: {},
         detailOffsetY: [0],
         currentIndex: 0,
-        message: "",
-        isShow: false
       }
     },
     created() {
@@ -114,12 +110,7 @@
           checked: true
         }
         this.$store.dispatch('addCart',obj).then(res=>{
-          this.message = res
-          this.isShow = true
-          setTimeout(()=>{
-            this.message = ""
-            this.isShow = false
-          },1500)
+          this.$toast.show(res)
         })
       }
     },

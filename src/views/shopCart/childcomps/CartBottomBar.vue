@@ -5,7 +5,7 @@
       <span>全选</span>
     </div>
     <div class="total">总计：{{totalPrice}}</div>
-    <div class="calc">去计算({{cartCheckedLength}})</div>
+    <div class="calc" @click="goToCalc">去计算({{cartCheckedLength}})</div>
 
   </div>
 
@@ -43,6 +43,11 @@
         // 如果全部选中，取消选中
         let checkedFlag = !this.isCheckedAll
         this.getCartList.forEach(item => (item.checked = checkedFlag))
+      },
+      goToCalc(){
+        if(this.cartCheckedLength == 0){
+          this.$toast.show("请添加商品")
+        }
       }
     }
   }
