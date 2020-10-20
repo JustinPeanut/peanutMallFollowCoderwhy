@@ -1,11 +1,11 @@
 <template>
   <div class="bottom">
     <div class="check-content">
-      <cart-check-button class="check-button"/>
+      <cart-check-button class="check-button" :is-checked="isCheckedAll" @click.native="checkedChange"/>
       <span>全选</span>
     </div>
     <div class="total">总计：{{totalPrice}}</div>
-    <div class="calc">去计算({{cartLength}})</div>
+    <div class="calc">去计算({{cartCheckedLength}})</div>
 
   </div>
 
@@ -21,7 +21,7 @@
     },
     computed: {
       ...mapGetters(['getCartList']),
-      cartLength(){
+      cartCheckedLength(){
         return this.getCartList.filter(item => item.checked == true).length
       },
       totalPrice(){
@@ -29,6 +29,20 @@
           .reduce((previousValue, item) => {
             return previousValue + item.price * item.count
           },0).toFixed(2)
+      },
+      isCheckedAll(){
+        if(this.getCartList.length == 0){
+          return false
+        }
+        return this.cartCheckedLength == this.getCartList.length
+
+      }
+    },
+    methods: {
+      checkedChange(){
+        // 如果全部选中，取消选中
+        let checkedFlag = !this.isCheckedAll
+        this.getCartList.forEach(item => (item.checked = checkedFlag))
       }
     }
   }

@@ -10,6 +10,7 @@
   </scroll>
   <back-top @click.native="backTop" v-show="isShow"/>
   <detail-bottom-bar @addEvent="addCartList"/>
+  <toast :message="message" :isShow="isShow"/>
 </div>
 </template>
 
@@ -23,7 +24,9 @@
   import DetailBottomBar from "./childcomps/DetailBottomBar";
 
 
+
   import Scroll from "components/common/betterscroll/Scroll";
+  import Toast from "components/common/toast/Toast";
   import {getDetail,Goods,Shop,GoodsParam} from "network/detail/getDetail";
   import mixin from "common/mixin/mixin";
 
@@ -37,7 +40,8 @@
       DetailParamInfo,
       Scroll,
       DetailGoodsInfo,
-      DetailBottomBar
+      DetailBottomBar,
+      Toast
     },
     data(){
       return {
@@ -49,6 +53,8 @@
         detailInfo: {},
         detailOffsetY: [0],
         currentIndex: 0,
+        message: "",
+        isShow: false
       }
     },
     created() {
@@ -107,7 +113,14 @@
           img: this.detailImage[0],
           checked: true
         }
-        this.$store.dispatch('addCart',obj)
+        this.$store.dispatch('addCart',obj).then(res=>{
+          this.message = res
+          this.isShow = true
+          setTimeout(()=>{
+            this.message = ""
+            this.isShow = false
+          },1500)
+        })
       }
     },
 
