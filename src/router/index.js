@@ -3,7 +3,7 @@ import Vue from 'vue';
 const Home = () => import("views/Home/Home");
 const Category = () => import("views/Category");
 const Profile = () => import("views/Profile");
-const ShopCart = () => import("views/ShopCart");
+const ShopCart = () => import("views/shopCart/ShopCart");
 const Detail = () => import("views/detail/Detail");
 
 

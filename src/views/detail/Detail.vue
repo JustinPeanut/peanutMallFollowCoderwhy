@@ -47,7 +47,7 @@
         shop: {},
         goodsParam: {},
         detailInfo: {},
-        detailOffsetY: [44],
+        detailOffsetY: [0],
         currentIndex: 0,
       }
     },
@@ -104,7 +104,8 @@
           desc: this.goods.desc,
           price: this.goods.realPrice,
           title: this.goods.title,
-          img: this.detailImage[0]
+          img: this.detailImage[0],
+          checked: true
         }
         this.$store.dispatch('addCart',obj)
       }
