@@ -33,14 +33,14 @@
 <style scoped>
   #cart_list {
     font-size: 0.68rem;
-    height: calc(100vh - 1.9rem - 2.09rem - 1.9rem);
+    height: 100vh;
   }
 
   /**
   * scroll
   */
   .cart_scroll {
-    height: 100%;
+    height: calc(100% - 44px - 49px - 40px);
     overflow: hidden;
   }
 </style>

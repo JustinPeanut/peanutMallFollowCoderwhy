@@ -4,6 +4,7 @@
       <div slot="center">购物车({{length}})</div>
     </nav-bar>
     <cart-list></cart-list>
+    <cart-bottom-bar/>
   </div>
 
 
@@ -12,6 +13,7 @@
 
 <script>
   import NavBar from "components/common/navbar/NavBar";
+  import CartBottomBar from "./childcomps/CartBottomBar";
   import CartList from "./childcomps/CartList";
 
 
@@ -20,7 +22,8 @@
     name: "ShopCart",
     components: {
       NavBar,
-      CartList
+      CartList,
+      CartBottomBar
     },
     computed: {
       ...mapGetters({
@@ -34,5 +37,8 @@
 .nav-bar{
   background-color: var(--color-tint);
   color: #fff;
+}
+.shopCart{
+  height: 100vh;
 }
 </style>

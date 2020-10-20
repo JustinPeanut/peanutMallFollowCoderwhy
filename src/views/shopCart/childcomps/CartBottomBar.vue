@@ -1,0 +1,65 @@
+<template>
+  <div class="bottom">
+    <div class="check-content">
+      <cart-check-button class="check-button"/>
+      <span>全选</span>
+    </div>
+    <div class="total">总计：{{totalPrice}}</div>
+    <div class="calc">去计算({{cartLength}})</div>
+
+  </div>
+
+</template>
+
+<script>
+  import CartCheckButton from "./CartCheckButton";
+  import {mapGetters} from "vuex"
+  export default {
+    name: "CartBottomBar",
+    components:{
+      CartCheckButton
+    },
+    computed: {
+      ...mapGetters(['getCartList']),
+      cartLength(){
+        return this.getCartList.filter(item => item.checked == true).length
+      },
+      totalPrice(){
+        return '￥'+ this.getCartList.filter(item => item.checked == true)
+          .reduce((previousValue, item) => {
+            return previousValue + item.price * item.count
+          },0).toFixed(2)
+      }
+    }
+  }
+</script>
+
+<style scoped>
+  .bottom{
+    width: 100%;
+    position: absolute;
+    bottom: 49px;
+    height: 40px;
+    display: flex;
+    background-color: #eeeeee;
+    align-items: center;
+    font-size: 12px;
+  }
+  .check-content{
+    position: relative;
+    display: flex;
+    line-height: 49px;
+    margin-left: 10px;
+    width: 90px;
+  }
+  .total{
+    flex: 1;
+  }
+  .calc{
+    text-align: center;
+    line-height: 40px;
+    height: 100%;
+    width: 90px;
+    background-color: #eb4868;
+  }
+</style>
